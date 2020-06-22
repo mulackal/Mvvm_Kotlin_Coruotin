@@ -1,0 +1,22 @@
+
+1.In Deo
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  suspend fun upsert(user: User) : Long
+2.Repository
+     suspend fun saveUser(user: User) = db.getUserDao().upsert(user)
+3.Activity
+   lifecycleScope.launch { viewModel.saveUser(authResponse.user)  }
+
+Note: observeForever declared variable(quotes) change any time execute the saveQuotes() function
+  private val quotes = MutableLiveData<List<Quote>>()
+  quotes.observeForever {
+            saveQuotes(it)
+        }
+^
+Same use : when "_userId" variable changed execute tha getUser() function..
+           "user" variable observe in activity so data automatically reflected
+   private val _userId: MutableLiveData<String> = MutableLiveData()
+   val user: LiveData<User> = Transformations
+        .switchMap(_userId){
+            Repository.getUser(it)
+        }

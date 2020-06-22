@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def libs = rootProject.ext.libraries
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.vip.mvvm_setup"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Server base url
+        buildConfigField "String", "BASE_URL", "\"http://ep.com/\""
+        buildConfigField "String", "BASEURL_STAGING", "\"http://eshop.rhombusitsolutions.com/\""
+
+    }
+
+    buildTypes {
+        release {
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
+            minifyEnabled true
+            // Enables resource shrinking, which is performed by the
+            // Android Gradle plugin.
+            shrinkResources true
+            // Includes the default ProGuard rules files that are packaged with
+            // the Android Gradle plugin. To learn more, go to the section about
+            // R8 configuration files.
+
+            //useProguard true
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    implementation "androidx.legacy:legacy-support-v4:${libs.supportVersion}"
+    implementation "com.google.android.material:material:${libs.supportVersion}"
+
+    implementation "androidx.recyclerview:recyclerview:${libs.cardview}"
+    implementation "androidx.cardview:cardview:${libs.cardview}"
+
+    //Multidex
+    implementation "com.android.support:multidex:${libs.multidex}"
+
+    // loader shows
+    implementation "com.wang.avi:library:${libs.avi_library}"
+
+    //Gson
+    implementation "com.google.code.gson:gson:${libs.gson}"
+
+    //Glid
+    implementation "com.github.bumptech.glide:glide:${libs.glide}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${libs.glide}"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:${libs.retrofit}"
+    implementation "com.squareup.retrofit2:converter-gson:${libs.retrofit}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${libs.logging_interceptor}"
+
+
+    //LiveData/Model
+    implementation "androidx.lifecycle:lifecycle-runtime:${libs.archLifecycleVersion}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${libs.archLifecycleVersion}"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:${libs.archLifecycleVersion}"
+
+    //Kotlin Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.coroutines}"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.coroutines}"
+
+    /*  //Room
+    //Android Room
+    implementation "androidx.room:room-runtime:${libs.roomVersion}"
+    implementation "androidx.room:room-ktx:${libs.roomVersion}"
+    kapt "androidx.room:room-compiler:${libs.roomVersion}"
+    androidTestImplementation "androidx.room:room-testing:${libs.roomVersion}" */
+
+    // Databinding compiler for kotlin
+    kapt "com.android.databinding:compiler:${libs.data_bindind}"
+
+    //New Material Design
+    implementation "com.google.android.material:material:${libs.material}"
+
+    // Stetho
+    implementation "com.facebook.stetho:stetho:${libs.stetho}"
+    implementation "com.facebook.stetho:stetho-okhttp3:${libs.stetho_okhttp3}"
+
+    /*//Google map and location
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'*/
+}

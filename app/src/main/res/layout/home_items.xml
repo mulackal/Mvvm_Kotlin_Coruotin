@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class="ItemHomeDataBinding">
+
+        <import type="com.vip.mvvm_setup.utils.FormatChange" />
+
+        <variable
+            name="ItemHomeData"
+            type="com.vip.mvvm_setup.ui.activity.home.HomeProductwiseData" />
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/white"
+        android:layout_margin="3dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/card_layout"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardCornerRadius="8dp"
+            card_view:cardElevation="6dp">
+
+        <RelativeLayout
+
+            android:id="@+id/rePushDescriptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/viewBlueStirpVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/viewcolor"
+                    android:layout_width="2dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorAccent" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/viewBlueStirpVertical"
+                android:layout_toRightOf="@id/viewBlueStirpVertical">
+
+
+                <LinearLayout
+                    android:id="@+id/work_title"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentRight="true">
+
+                    <TextView
+                        android:id="@+id/loan_status"
+                        android:layout_width="130dp"
+                        android:layout_height="25dp"
+                        android:gravity="center"
+                        android:fadingEdge="horizontal"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                         android:text="@{ItemHomeData.cCode}"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/lay1"
+                    android:layout_below="@+id/work_title"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                         android:textStyle="bold"
+                        style="@style/EditViewStyle"
+                        android:singleLine="true"
+                        android:textSize="15sp"
+                       android:text="@{ItemHomeData.CName}"
+                       android:layout_marginTop="1dp"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                     <TextView
+                        android:id="@+id/txt_date"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/txt_id"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="1dp"
+                        style="@style/EditViewStyle"
+                        android:singleLine="true"
+                        android:textSize="14sp"
+                         android:text="@{ItemHomeData.mfacname}"
+                        android:gravity="end"
+                        android:textColor="@color/black" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txt_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lay1"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    style="@style/EditViewStyle"
+                    android:singleLine="true"
+                    android:textSize="14sp"
+                    android:gravity="start"
+                    android:text="@{ItemHomeData.disc.toString()}"
+                    android:textColor="@color/navigation_tab_red" />
+
+
+                <TextView
+                    android:id="@+id/txt_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_title"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="2dp"
+                    style="@style/EditViewStyle"
+                    android:textSize="14sp"
+                    android:gravity="start"
+                    android:text="@{ FormatChange.getStingAddEMI(ItemHomeData.cCode.toString()) }"
+                    android:textColor="@color/black" />
+             </RelativeLayout>
+
+        </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </RelativeLayout>
+</layout>

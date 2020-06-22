@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class ="SplashDataBinding">
+        <variable
+            name="splashviewdemModel"
+            type="com.vip.mvvm_setup.ui.activity.splash.SplashViewModel"/>
+    </data>
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+        android:background="@color/transperent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher_foreground"/>
+
+</RelativeLayout>
+</layout>

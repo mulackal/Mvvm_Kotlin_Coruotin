@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class ="LoginDataBinding">
+        <variable
+            name="logviewModel"
+            type="LoginViewModel"/>
+
+        <import type="com.vip.mvvm_setup.ui.activity.login.LoginViewModel"/>
+    </data>
+
+
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="7dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="7dp"
+        android:layout_margin="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Username"
+                android:padding="5dp"
+                android:focusableInTouchMode="true"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:text="@={logviewModel.usernmae}"
+                android:id="@+id/username"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+               android:inputType="textPassword"
+                android:id="@+id/password"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:padding="5dp"
+                android:text="@={logviewModel.password}"
+                android:hint="Password"
+                android:layout_marginTop="10dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textAllCaps="false"
+                android:id="@+id/submmit"
+                android:layout_marginTop="10dp"
+                android:text="Get In"
+                android:onClick="@{() -> logviewModel.login()}"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
+
+</layout>
