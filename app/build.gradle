@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+/*// Apply the Crashlytics Gradle plugin
+apply plugin: 'com.google.firebase.crashlytics'*/
+
 def libs = rootProject.ext.libraries
 
 android {
@@ -94,6 +97,9 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${libs.coroutines}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.coroutines}"
 
+    //security library - support above sdk 23
+    //implementation "androidx.security:security-crypto:${libs.security}"
+
     /*  //Room
     //Android Room
     implementation "androidx.room:room-runtime:${libs.roomVersion}"
@@ -111,7 +117,12 @@ dependencies {
     implementation "com.facebook.stetho:stetho:${libs.stetho}"
     implementation "com.facebook.stetho:stetho-okhttp3:${libs.stetho_okhttp3}"
 
+    /*// Add the Firebase SDK for Crashlytics.
+   implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta02'
+   implementation "com.google.firebase:firebase-messaging:19.0.0"*/
+
     /*//Google map and location
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'*/
 }
+//apply plugin: 'com.google.gms.google-services'

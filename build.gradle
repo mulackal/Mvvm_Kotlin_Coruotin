@@ -31,6 +31,7 @@ ext{
             junit               :"4.12",
             roomVersion         :"2.2.5",
             archLifecycleVersion :"2.2.0",
+            security             :"1.0.0-rc02",
 
     ]
 }
@@ -49,6 +50,9 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        /*   // Add the Crashlytics Gradle plugin.
+      classpath 'com.google.firebase:firebase-crashlytics-gradle:2.0.0-beta03'*/
     }
 }
 

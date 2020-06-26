@@ -14,27 +14,22 @@ class SharedPreferenceUtils(private var mContext: Context) {
     private var mSharedPreferences: SharedPreferences =
         mContext.getSharedPreferences(mContext.applicationContext.packageName, Context.MODE_PRIVATE)
 
-    private var mSharedPreferencesEditor: SharedPreferences.Editor? = null
+    /*lateinit var masterKeyAlias: String
+    lateinit var sharedPreferences: SharedPreferences*/
 
-    private var mSharedPreferenceUtils: SharedPreferenceUtils? = null
+    private var mSharedPreferencesEditor: SharedPreferences.Editor? = null
 
     init {
         mSharedPreferencesEditor = mSharedPreferences.edit()
-    }
 
-    /**
-     * Creates single instance of SharedPreferenceUtils
-     *
-     * @param context context of Activity or Service
-     * @return Returns instance of SharedPreferenceUtils
-     * //
-     */
-    @Synchronized
-    fun  getInstance(context: Context?): SharedPreferenceUtils {
-        if (mSharedPreferenceUtils == null) {
-            mSharedPreferenceUtils = SharedPreferenceUtils(context!!)
-        }
-        return mSharedPreferenceUtils as SharedPreferenceUtils
+        // encrypt SharedPreferences keys and values respectively.
+        /** support above sdk 23**/
+       /* mSharedPreferences = EncryptedSharedPreferences.create(
+            mContext.applicationContext.packageName,
+            masterKeyAlias,
+            mContext,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM)*/
     }
 
     /**
